@@ -67,7 +67,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 ### Deployment
 The app was deployed to Netlify and can be found here;
- [](https://627d521bc8f46a040391ff5b--idyllic-fenglisu-5c1414.netlify.app/)
+ [https://627d521bc8f46a040391ff5b--idyllic-fenglisu-5c1414.netlify.app/](https://627d521bc8f46a040391ff5b--idyllic-fenglisu-5c1414.netlify.app/)
 
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
