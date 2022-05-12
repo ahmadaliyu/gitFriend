@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Box } from "@material-ui/core";
-import SearchUser from "../components/SearchUser";
 import PageNotFound from "../components/PageNotFound";
 import DisplayGithubUserRepo from "../components/DisplayUserRepos";
 import App from "../App";

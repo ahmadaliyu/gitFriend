@@ -1,13 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import {
-  Box,
-  FormControl,
-  Button,
-  CircularProgress,
-  Modal,
-} from "@material-ui/core";
+import { Box, FormControl, Button, CircularProgress } from "@material-ui/core";
 import { useStyles } from "../styles/searchuser.styles";
-import { useDispatch } from "react-redux";
 import {
   useFetchOrganizationsMutation,
   useFetchReposMutation,
