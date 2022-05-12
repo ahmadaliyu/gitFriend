@@ -13,24 +13,20 @@ import {
   useFetchReposMutation,
 } from "../redux/services/apiService";
 import { useNavigate } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
-// import Header from "../Header";
 
 const SearchUser = (props) => {
   const classes = useStyles(props);
-  const dispatch = useDispatch();
-  // const history = useHistory();
+
   const [username, setUsername] = useState("");
   const [showAction, setShowAction] = useState("repos");
-  const [showModal, setShowModal] = useState(false);
 
   const [
     fetchRepos,
-    { isLoading: loadingRepos, data: repos, error },
+    { isLoading: loadingRepos, data: repos, error: error1 },
   ] = useFetchReposMutation();
   const [
     fetchOrganizations,
-    { isLoading: loadingOrgs, data: organizations, isFetching },
+    { isLoading: loadingOrgs, data: organizations, error: error2, isFetching },
   ] = useFetchOrganizationsMutation();
 
   // console.log(3333, organizations);
@@ -86,7 +82,9 @@ const SearchUser = (props) => {
 
       <div className={classes.btnGroup}>
         <Button
-          onClick={() => setShowAction("repos")}
+          onClick={() => {
+            setShowAction("repos");
+          }}
           className={classes.btn1}
           variant="contained"
           color="primary"
@@ -94,7 +92,9 @@ const SearchUser = (props) => {
           Repos
         </Button>
         <Button
-          onClick={() => setShowAction("orgs")}
+          onClick={() => {
+            setShowAction("orgs");
+          }}
           className="btn2"
           variant="contained"
           color="secondary"
@@ -117,6 +117,16 @@ const SearchUser = (props) => {
             value={username}
             onChange={onChangeHandler}
           />
+          {error1 && (
+            <p style={{ color: "red", fontSize: "15px" }}>
+              {error1.data.message}
+            </p>
+          )}
+          {error2 && (
+            <p style={{ color: "red", fontSize: "15px" }}>
+              {error2.data.message}
+            </p>
+          )}
           <Button
             // key={}
             disabled={username.length === 0}
