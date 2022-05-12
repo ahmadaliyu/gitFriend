@@ -1,18 +1,18 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-function DisplayUserRepos() {
+function DisplayOrganizations() {
   let location = useLocation();
-  const repositories = location.state.repo;
+  const organizations = location.state.orgs;
   //   console.log(66, location.state.repo);
 
   return (
     <div style={{ margin: "5%" }}>
-      <h3>Your repositories</h3>
-      {Array.isArray(repositories) === true && repositories.length === 0 && (
-        <h4>You don't have any repository</h4>
+      <h3>Your Organizations</h3>
+      {Array.isArray(organizations) === true && organizations.length === 0 && (
+        <p>You don't belong to any Organization</p>
       )}
-      {Array.isArray(repositories) === true && (
+      {Array.isArray(organizations) === true && (
         <div
           style={{
             display: "flex",
@@ -23,8 +23,8 @@ function DisplayUserRepos() {
             right: "40%",
           }}
         >
-          {repositories.map((repo) => (
-            <li key={repo.id}>{repo.name}</li>
+          {organizations.map((orgs) => (
+            <li key={orgs.id}>{orgs.name}</li>
           ))}
         </div>
       )}
@@ -40,4 +40,4 @@ function DisplayUserRepos() {
   );
 }
 
-export default DisplayUserRepos;
+export default DisplayOrganizations;

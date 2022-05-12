@@ -12,6 +12,7 @@ import {
   useFetchOrganizationsMutation,
   useFetchReposMutation,
 } from "../redux/services/apiService";
+import { useNavigate } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 // import Header from "../Header";
 
@@ -25,7 +26,7 @@ const SearchUser = (props) => {
 
   const [
     fetchRepos,
-    { isLoading: loadingRepos, data: repos },
+    { isLoading: loadingRepos, data: repos, error },
   ] = useFetchReposMutation();
   const [
     fetchOrganizations,
@@ -33,7 +34,7 @@ const SearchUser = (props) => {
   ] = useFetchOrganizationsMutation();
 
   // console.log(3333, organizations);
-  console.log(444, repos);
+  // console.log(444, Array.isArray(repos));
 
   const inputRef = useRef();
   const submitBtn = useRef();
@@ -42,15 +43,15 @@ const SearchUser = (props) => {
     inputRef.current.focus();
   }, []);
 
+  const navigate = useNavigate();
+
   const onChangeHandler = (e) => setUsername(e.target.value);
 
   const handleSearchRepo = async () => {
     await fetchRepos(username)
       .unwrap()
       .then((res) => {
-        if (res.data) {
-          console.log(res);
-        }
+        navigate(`/user-repositories`, { state: { repo: res } });
       })
       .catch((err) => {
         console.log(err);
@@ -60,9 +61,7 @@ const SearchUser = (props) => {
     await fetchOrganizations(username)
       .unwrap()
       .then((res) => {
-        if (res.data) {
-          console.log(res);
-        }
+        navigate(`/user-organizations`, { state: { orgs: res } });
       })
       .catch((err) => {
         console.log(err);
@@ -84,6 +83,7 @@ const SearchUser = (props) => {
           <h3>Find your github Organizations</h3>
         )}
       </div>
+
       <div className={classes.btnGroup}>
         <Button
           onClick={() => setShowAction("repos")}
@@ -102,6 +102,7 @@ const SearchUser = (props) => {
           Organizations
         </Button>
       </div>
+
       <FormControl className={classes.searchForm}>
         {/* <Header /> */}
 
