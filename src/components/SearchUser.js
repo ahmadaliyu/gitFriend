@@ -15,11 +15,11 @@ const SearchUser = (props) => {
 
   const [
     fetchRepos,
-    { isLoading: loadingRepos, data: repos, error: error1 },
+    { isLoading: loadingRepos, error: error1 },
   ] = useFetchReposMutation();
   const [
     fetchOrganizations,
-    { isLoading: loadingOrgs, data: organizations, error: error2, isFetching },
+    { isLoading: loadingOrgs, error: error2 },
   ] = useFetchOrganizationsMutation();
 
   // console.log(3333, organizations);
